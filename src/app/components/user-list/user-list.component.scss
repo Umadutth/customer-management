@@ -1,0 +1,54 @@
+.section_userlist {
+    .title-btn-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .icon-style {
+        cursor: pointer;
+        font-size: 25px;
+        padding: 5px;
+    }
+
+    .paginator {
+        .pag-row {
+            display: flex;
+            justify-content: center;
+
+            .pag-col-1 {
+                margin-right: 5px;
+
+                li.page-item {
+                    margin: 0 3px;
+
+                    a {
+
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                li.active {
+                    padding: 0 5px;
+                }
+            }
+        }
+
+        select.form-control {
+            width: auto;
+            text-align: center;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+    }
+}
