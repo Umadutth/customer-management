@@ -1,0 +1,140 @@
+<div class="card border-secondary mb-3 section-useradd row">
+    <div class="card-header">
+        <div class="title-btn-container">
+            <h2>Add User</h2>
+            <button type="button" class="btn btn-outline-secondary" (click)="backPage()"> <i class="fa fa-arrow-left"
+                    aria-hidden="true"></i>
+
+                Back</button>
+        </div>
+    </div>
+    <div class="card-body text-secondary">
+        <form class="row g-3" [formGroup]="userForm" (ngSubmit)="formSubmit()">
+            <div class="col-md-4">
+                <label for="inputName" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputName" placeholder="Enter name" formControlName="name">
+
+                <!-- Error Validation -->
+                <div *ngIf="userForm.get('name')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Name is required
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <label for="inputUsername" class="form-label">Username <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputUsername" placeholder="Enter username"
+                    formControlName="username">
+                <!-- Error Validation -->
+                <div *ngIf="userForm.get('username')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Username is required
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="inputEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address"
+                    formControlName="email">
+                <!-- Error Validation -->
+                <div *ngIf="userForm.get('email')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Email is required
+                </div>
+                <div *ngIf="userForm.get('email')?.errors?.pattern && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Please enter a valid email address
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <label for="inputPhone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputPhone" placeholder="Enter phone number"
+                    formControlName="phone">
+                <!-- Error Validation -->
+                <div *ngIf="userForm.get('phone')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Phone number is required
+                </div>
+                <div *ngIf="userForm.get('phone')?.errors?.pattern && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Please enter a valid number
+                </div>
+            </div>
+
+            <ng-container formGroupName="address">
+                <div class="col-6">
+                    <label for="inputStreet" class="form-label">Street <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputStreet" placeholder="Enter street address"
+                        formControlName="street">
+                    <!-- Error Validation -->
+                    <div *ngIf="userForm.get('address.street')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Street is required
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputLocation" class="form-label">Location <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputLocation" placeholder="Enter location"
+                        formControlName="suite">
+                    <!-- Error Validation -->
+                    <div *ngIf="userForm.get('address.suite')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Location is required
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputCity" class="form-label">City <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Enter city"
+                        formControlName="city">
+                    <!-- Error Validation -->
+                    <div *ngIf="userForm.get('address.city')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        City is required
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">ZipCode <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputZip" placeholder="Enter zipcode"
+                        formControlName="zipcode">
+                    <!-- Error Validation -->
+                    <div *ngIf="userForm.get('address.zipcode')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        ZipCode is required
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container formGroupName="company">
+                <div class="col-md-2">
+                    <label for="inputCompany" class="form-label">Company Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputCompany" placeholder="Enter company name"
+                        formControlName="name">
+                    <!-- Error Validation -->
+                    <div *ngIf="userForm.get('company.name')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Company name is required
+                    </div>
+                </div>
+            </ng-container>
+            <div class="col-md-4">
+                <label class="form-label" for="inputWebsite">Website URL</label>
+                <input type="url" class="form-control" id="inputWebsite" placeholder="Enter website url"
+                    formControlName="website">
+                    <div *ngIf="userForm.get('website')?.errors?.pattern && submitted" class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Please enter a valid website url
+                    </div>
+            </div>
+
+            <div class="col-12 btn-submit">
+                <button type="submit" class="btn btn-primary">Add User</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>

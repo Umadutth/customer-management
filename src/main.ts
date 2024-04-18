@@ -9,7 +9,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withInterceptor
 import { importProvidersFrom } from '@angular/core';
 import { AuthInterceptorService } from './app/services/auth-interceptor/auth-interceptor.service';
 import { provideToastr } from 'ngx-toastr';
-import { UserService } from './app/services/user/user.service';
+import { CustomerServiceService } from './app/services/customer-service/customer-service.service';
+
 
 // platformBrowserDynamic().bootstrapModule(AppModule)
 //   .catch(err => console.error(err));
@@ -19,7 +20,7 @@ bootstrapApplication(AppComponent,
   providers: [
     provideRouter(APP_Route), 
     importProvidersFrom(HttpClientModule),
-    UserService,
+    CustomerServiceService,
     provideToastr(),
     provideAnimations(),
     provideHttpClient(

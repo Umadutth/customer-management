@@ -1,11 +1,13 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from 'src/app/services/user/user.service';
+
 import { Subscription, catchError } from 'rxjs';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CustomerServiceService } from 'src/app/services/customer-service/customer-service.service';
 
 @Component({
   selector: 'app-user-list',
@@ -23,13 +25,15 @@ export class UserListComponent implements OnInit, OnDestroy {
   perPage = 5;
 
   constructor(public toastr: ToastrService,
-    private userService: UserService
+    private userService: CustomerServiceService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.getUSer()
   }
 
+  /*** List the users ***/
   getUSer() {
     this.subscription.add(
       this.userService.getUsers().subscribe({
@@ -50,22 +54,22 @@ export class UserListComponent implements OnInit, OnDestroy {
     return this.perPage * (this.currentPage - 1) + srl;
   }
 
-
+  /***  slice date base on the count for pagination ****/
   get visibleData(): any[] {
-       const startIndex = (this.currentPage - 1) * this.perPage;
-      const endIndex = startIndex + this.perPage;
-      console.log(this.currentPage,this.perPage,startIndex,endIndex)
-      return this.userList.slice(startIndex, endIndex);
- 
+    const startIndex = (this.currentPage - 1) * this.perPage;
+    const endIndex = startIndex + this.perPage;
+    return this.userList.slice(startIndex, endIndex);
+
   }
 
+  /*** next page action in pagination ****/
   nextPage() {
-    console.log(this.totalPages, this.currentPage,this.perPage)
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
   }
 
+  /*** previous page action in pagination ****/
 
   previousPage() {
     if (this.currentPage > 1) {
@@ -73,22 +77,28 @@ export class UserListComponent implements OnInit, OnDestroy {
     }
   }
 
+  /*** per page change action ****/
+
   onPerPageChange(perPage: number) {
     this.perPage = perPage;
     this.currentPage = 1;
-    // Adjust current page if necessary
-    // const totalPages = this.totalPages;
-    // if (this.currentPage > totalPages) {
-    //   this.currentPage = totalPages;
-    // }
   }
 
 
-
+  /*** calculate total page ****/
   get totalPages(): number {
     return Math.ceil(this.userList.length / this.perPage);
   }
-  ngOnDestroy(): void {
 
+  /*** destroy subscriptions ****/
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
+
+  /*** route to user add page ****/
+
+  addUser() {
+    this.router.navigate(['customer-add'])
   }
 }

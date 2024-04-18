@@ -2,7 +2,7 @@
     <div class="card-header">
         <div class="title-btn-container">
             <h2>Users</h2>
-            <button class="btn btn-warning">Add New user</button>
+            <button class="btn btn-info" (click)=addUser()>Add New user</button>
         </div>
     </div>
     <div class="card-body text-secondary">
@@ -44,50 +44,22 @@
     </div>
     <nav aria-label="...">
         <div>
-        <!-- <div >
-            <select class="form-control" [(ngModel)]='perPage' (change)="loadDataWithPagination(perPage,true)">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-           
-            </select>
-          </div> -->
-        <ul class="pagination pagination-sm justify-content-end">
-            <li>
-                <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-            </li>
-            <li>
-                <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
 
-            </li>
-        </ul>
-    </div>
-    </nav>
-    <!-- <div class="paginator" >
-        <div class="pag-row">
-            <div class="pag-col-1">
-
-                <select class="form-control" [(ngModel)]='perPage' (change)="onPerPageChange(perPage)">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+            <ul class="pagination pagination-sm justify-content-end">
+                <select [(ngModel)]='perPage' (change)="onPerPageChange(perPage)">
                     <option value="5">5</option>
                     <option value="10">10</option>
-                 
-                  </select>
-            </div>
-            <div class="pag-col-2">
-                <ul class="pagination pagination-sm">
-                    <li>
-                        <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-                    </li>
-                    <li>
-                        <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
-        
-                    </li>
-                </ul>
-            </div>
-        </div>
 
-    </div> -->
+                </select>
+                <li>
+                    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+                </li>
+                <li>
+                    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
 </div>

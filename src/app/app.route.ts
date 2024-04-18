@@ -3,12 +3,16 @@ import { Route } from '@angular/router';
 
 export const APP_Route: Route[] = [
   {
-    path: 'users-list',
+    path: 'customers-list',
     loadComponent: () => import('./components/user-list/user-list.component').then((x) => x.UserListComponent)
   },
   {
     path: '',
-    redirectTo: 'users-list', pathMatch: 'prefix'
+    redirectTo: 'customers-list', pathMatch: 'prefix'
+  },
+  {
+    path: 'customer-add',
+    loadComponent:() => import('./components/user-add/user-add.component').then((x)=>x.UserAddComponent)
   }
 
 ];
