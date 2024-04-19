@@ -20,8 +20,23 @@ export class CustomerServiceService {
     return this.http.get<any[]>(this.baseurl + this.user)
   }
 
-//  Create customer
-createCustomer(data:any):Observable<any>{
-  return this.http.post(this.baseurl+this.user,data)
-}
+  //  Create customer
+  createCustomer(data: any): Observable<any> {
+    return this.http.post(this.baseurl + this.user, data)
+  }
+
+  //  individual customer details
+  getIndividualCustomer(id: any) {
+    return this.http.get(this.baseurl + this.user + '/' + id)
+  }
+
+  // update customer details
+  updateCustomer(id: any, data: any) {
+    return this.http.put(this.baseurl + this.user + '/' + id, data)
+  }
+
+  //Delete customer
+  deleteCustomer(id: any) {
+    return this.http.delete(this.baseurl + this.user + '/' + id)
+  }
 }

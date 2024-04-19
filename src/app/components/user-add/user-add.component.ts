@@ -56,7 +56,7 @@ export class UserAddComponent implements OnInit, OnDestroy {
 
   // route to customers list page
   backPage() {
-    this.router.navigate(['customers-list']);
+    this.router.navigate(['customers/list']);
   }
 
 
@@ -72,7 +72,7 @@ export class UserAddComponent implements OnInit, OnDestroy {
           next: (res: any) => {
             console.log(res);
             this.toaster.success('Added customer successfully', 'Success')
-            this.router.navigate(['/customers-list'])
+            this.router.navigate(['/customers/list'])
           }, error: (err: any) => {
             this.toaster.error(`${err.message}`, 'Error')
           }

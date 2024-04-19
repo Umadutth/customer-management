@@ -13,7 +13,9 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     RouterModule,
     HeaderSectionComponent,
-    FormsModule
+    FormsModule,
+    
+
     ],
 
   templateUrl: './app.component.html',

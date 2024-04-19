@@ -1,0 +1,133 @@
+<div class="card border-secondary mb-3 section-customer-edit row">
+    <div class="card-header">
+        <div class="title-btn-container">
+            <div>
+                <h2> Customer - Details/Edit</h2>
+
+            </div>
+            <div>
+
+                <button type="button" class="btn btn-primary edit-btn" (click)="editData()"> <i class="fa fa-pencil"
+                        aria-hidden="true"></i>
+                    Edit</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="backPage()"> <i
+                        class="fa fa-arrow-left" aria-hidden="true"></i>
+                    Back</button>
+                <div class="note-section"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                    Click on edit button to enable edit action</div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="card-body text-secondary" *ngIf="dataLoad">
+        <form class="row g-3" [formGroup]="customerEditForm" (ngSubmit)="editFormSubmit()">
+            <div class="col-md-4">
+                <label for="inputName" class="form-label">Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputName" placeholder="Enter name" formControlName="name"
+                    [readOnly]="readonly">
+                <div *ngIf="customerEditForm.get('name')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Name is required
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <label for="inputUsername" class="form-label">Username <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputUsername" placeholder="Enter username"
+                    [readOnly]="readonly" formControlName="username">
+                <div *ngIf="customerEditForm.get('username')?.errors?.required && submitted"
+                    class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Username is required
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="inputEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Enter email address"
+                    [readOnly]="readonly" formControlName="email">
+                <div *ngIf="customerEditForm.get('email')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Email is required
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <label for="inputPhone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="inputPhone" placeholder="Enter phone number"
+                    [readOnly]="readonly" formControlName="phone">
+                <div *ngIf="customerEditForm.get('phone')?.errors?.required && submitted" class="form-text text-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Phone number is required
+                </div>
+
+            </div>
+
+            <ng-container formGroupName="address">
+                <div class="col-6">
+                    <label for="inputStreet" class="form-label">Street <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputStreet" placeholder="Enter street address"
+                        [readOnly]="readonly" formControlName="street">
+                    <div *ngIf="customerEditForm.get('address.street')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Street is required
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputLocation" class="form-label">Location <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputLocation" placeholder="Enter location"
+                        [readOnly]="readonly" formControlName="suite">
+                    <div *ngIf="customerEditForm.get('address.suite')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Location is required
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputCity" class="form-label">City <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Enter city"
+                        [readOnly]="readonly" formControlName="city">
+                    <div *ngIf="customerEditForm.get('address.city')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        City is required
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <label for="inputZip" class="form-label">ZipCode <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputZip" placeholder="Enter zipcode"
+                        [readOnly]="readonly" formControlName="zipcode">
+                    <div *ngIf="customerEditForm.get('address.zipcode')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        ZipCode is required
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container formGroupName="company">
+                <div class="col-md-2">
+                    <label for="inputCompany" class="form-label">Company Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="inputCompany" placeholder="Enter company name"
+                        [readOnly]="readonly" formControlName="name">
+                    <div *ngIf="customerEditForm.get('company.name')?.errors?.required && submitted"
+                        class="form-text text-danger">
+                        <i class="fa fa-exclamation-circle"></i>
+                        Company name is required
+                    </div>
+                </div>
+            </ng-container>
+            <div class="col-md-4">
+                <label class="form-label" for="inputWebsite">Website URL</label>
+                <input type="url" class="form-control" id="inputWebsite" placeholder="Enter website url"
+                    [readOnly]="readonly" formControlName="website">
+            </div>
+
+            <div class="col-12 btn-submit" *ngIf="!readonly">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
